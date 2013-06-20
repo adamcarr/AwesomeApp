@@ -27,6 +27,8 @@
 
                 this.$el.find('.content').append(lectureListView.render().el);
 
+                collection.fetch();
+
                 return this;
             }
         });

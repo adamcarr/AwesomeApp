@@ -8,7 +8,6 @@
             tagName: 'section',
             
             initialize: function() {
-                this.model.fetch();
                 this.model.bind('reset', this.render, this);
                 var self = this;
                 this.model.bind('add', function(lecture) {
