@@ -23,7 +23,7 @@
             },
             
             add: function(event) {
-                this.navigate('add');
+                this.options.router.navigate('add', {trigger: true});
             }
         });
 

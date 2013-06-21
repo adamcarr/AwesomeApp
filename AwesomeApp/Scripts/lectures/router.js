@@ -7,30 +7,32 @@
         var AppRouter = Backbone.Router.extend({
 
             routes: {
-                '*actions': 'defaultAction',
                 'add': 'add',
-                'edit/:id': 'edit'
+                'edit/:id': 'edit',
+                
+                '*actions': 'defaultAction'
             },
 
             add: function () {
+                var self = this;
                 require(['views/edit_lecture'], function (EditLectureView) {
-                    var editLectureView = new editLectureView({ model: {} });
+                    var editLectureView = new EditLectureView({ model: self.model.create(), router: self });
                     $('.main-container').html(editLectureView.render().el);
                 });
             },
 
             edit: function (id) {
-                var collection = this.model;
+                var self = this;
                 require(['views/edit_lecture'], function (EditLectureView) {
-                    var editLectureView = new editLectureView({ model: collection });
+                    var editLectureView = new EditLectureView({ model: self.model, router: self });
                     $('.main-container').html(editLectureView.render().el);
                 });
             },
 
             defaultAction: function(actions) {
-                var collection = this.model;
+                var self = this;
                 require(['views/app'], function (AppView) {
-                    var appView = new AppView(({ model: collection }));
+                    var appView = new AppView(({ model: self.model, router: self }));
                     appView.render();
                 });
             },

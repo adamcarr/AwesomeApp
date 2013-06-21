@@ -11,7 +11,7 @@
                 this.model.on('reset', this.render, this);
                 var self = this;
                 this.model.on('add', function(lecture) {
-                    var newLectureView = new LectureView({ model: lecture }).render().el;
+                    var newLectureView = new LectureView({ model: lecture, router: self.options.router }).render().el;
                     self.$el.append(newLectureView);
                 });
             },
@@ -21,7 +21,7 @@
                 _.each(this.model.models, function(lecture) {
                     rootElement
                         .find(this.tagName)
-                        .append(new LectureView({ model: lecture }).render().el);
+                        .append(new LectureView({ model: lecture, router: self.options.router }).render().el);
                 }, this);
 
                 return this;

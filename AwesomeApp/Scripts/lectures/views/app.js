@@ -14,18 +14,18 @@
             
             render: function() {
                 this.$el.html(layoutTemplate);
-                var collection = this.model;
+                var self = this;
 
                 require(['views/header/menu'], function(HeaderMenuView) {
-                    var headerMenuView = new HeaderMenuView({ model: collection });
+                    var headerMenuView = new HeaderMenuView({ model: self.model, router: self.options.router });
                     headerMenuView.render();
                 });
 
-                var lectureListView = new LectureListView({ model: collection });
+                var lectureListView = new LectureListView({ model: this.model, router: this.options.router });
 
                 this.$el.find('.content').append(lectureListView.render().el);
 
-                collection.fetch();
+                this.model.fetch();
 
                 return this;
             }

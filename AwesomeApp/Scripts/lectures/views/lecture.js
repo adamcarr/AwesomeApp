@@ -16,6 +16,14 @@
                 this.$el.html(this.template(this.model.toJSON())).fadeIn('slow');
 
                 return this;
+            },
+            
+            events: {
+                'click .lecture-edit' : 'edit'
+            },
+            
+            edit: function() {
+                this.options.router.navigate('edit/' + this.model.get('Id'), { trigger: true });
             }
         });
 
