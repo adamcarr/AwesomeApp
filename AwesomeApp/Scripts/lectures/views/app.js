@@ -2,13 +2,11 @@
         'jquery',
         'underscore',
         'backbone',
-        'collections/lectures',
         'views/lecture_list',
         'text!templates/layout.html'
-    ], function($, _, Backbone, LectureCollection, LectureListView, layoutTemplate) {
+    ], function($, _, Backbone, LectureListView, layoutTemplate) {
         var AppView = Backbone.View.extend({
             el: '.main-container',
-            model: new LectureCollection(),
             
             initialize: function() {
                 

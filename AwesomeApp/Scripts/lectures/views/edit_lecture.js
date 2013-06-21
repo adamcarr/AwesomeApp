@@ -2,16 +2,16 @@
         'jquery',
         'underscore',
         'backbone',
-        'text!templates/lecture.html'
-    ], function($, _, Backbone, LectureTemplate) {
-        var LectureView = Backbone.View.extend({
-            tagName: 'article',
-            template: _.template(LectureTemplate),
-            
+        'text!templates/edit_lecture.html'
+    ], function($, _, Backbone, EditLectureTemplate) {
+        var EditLectureView = Backbone.View.extend({
+            tagName: 'form',
+            template: _.template(EditLectureTemplate),
+
             initialize: function() {
                 this.model.on('change', this.render, this);
             },
-            
+
             render: function() {
                 this.$el.html(this.template(this.model.toJSON())).fadeIn('slow');
 
@@ -19,5 +19,5 @@
             }
         });
 
-        return LectureView;
+        return EditLectureView;
     });

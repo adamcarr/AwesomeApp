@@ -184,9 +184,11 @@
     <Content Include="Scripts\lectures\main.js" />
     <Content Include="Scripts\lectures\models\lecture.js" />
     <Content Include="Scripts\lectures\router.js" />
+    <Content Include="Scripts\lectures\templates\edit_lecture.html" />
     <Content Include="Scripts\lectures\templates\header\menu.html" />
     <Content Include="Scripts\lectures\templates\layout.html" />
     <Content Include="Scripts\lectures\templates\lecture.html" />
+    <Content Include="Scripts\lectures\views\edit_lecture.js" />
     <Content Include="Scripts\lectures\views\lecture.js" />
     <Content Include="Scripts\lectures\views\lecture_list.js" />
     <Content Include="Scripts\lectures\views\app.js" />

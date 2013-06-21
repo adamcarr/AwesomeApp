@@ -8,9 +8,9 @@
             tagName: 'section',
             
             initialize: function() {
-                this.model.bind('reset', this.render, this);
+                this.model.on('reset', this.render, this);
                 var self = this;
-                this.model.bind('add', function(lecture) {
+                this.model.on('add', function(lecture) {
                     var newLectureView = new LectureView({ model: lecture }).render().el;
                     self.$el.append(newLectureView);
                 });

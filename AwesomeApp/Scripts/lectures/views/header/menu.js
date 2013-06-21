@@ -14,11 +14,16 @@
             },
             
             events: {
-                'click .refresh' : 'refresh'
+                'click .refresh': 'refresh',
+                'click .add': 'add'
             },
             
             refresh: function(event) {
                 this.model.fetch();
+            },
+            
+            add: function(event) {
+                this.navigate('add');
             }
         });
 

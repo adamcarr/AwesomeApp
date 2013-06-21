@@ -22,11 +22,7 @@
 });
 
 require([
-        'views/app',
         'router'
-    ], function(AppView, Router) {
-        var appView = new AppView();
-        appView.render();
-
+    ], function(Router) {
         Router.initialize();
     });
