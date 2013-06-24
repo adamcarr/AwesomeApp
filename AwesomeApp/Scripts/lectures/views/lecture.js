@@ -9,7 +9,10 @@
             template: _.template(LectureTemplate),
             
             initialize: function() {
-                this.model.on('change', this.render, this);
+                this.listenTo(this.model, 'change', this.render);
+                this.listenTo(this.model, 'destroy', function() {
+                    this.$el.remove();
+                });
             },
             
             render: function() {
@@ -23,7 +26,11 @@
             },
             
             edit: function() {
-                this.options.router.navigate('edit/' + this.model.get('Id'), { trigger: true });
+                Backbone.history.navigate('edit/' + this.model.get('Id'), { trigger: true });
+            },
+
+            undelegateEvents: function () {
+                this.model.off();
             }
         });
 

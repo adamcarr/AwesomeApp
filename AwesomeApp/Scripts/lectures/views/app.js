@@ -8,24 +8,24 @@
         var AppView = Backbone.View.extend({
             el: '.main-container',
             
-            initialize: function() {
-                
+            initialize: function(options) {
+                this.lectures = options.lectures;
             },
             
             render: function() {
-                this.$el.html(layoutTemplate);
                 var self = this;
 
+                this.$el.html(layoutTemplate);
+
                 require(['views/header/menu'], function(HeaderMenuView) {
-                    var headerMenuView = new HeaderMenuView({ model: self.model, router: self.options.router });
+                    var headerMenuView = new HeaderMenuView({ lectures: self.lectures });
                     headerMenuView.render();
                 });
 
-                var lectureListView = new LectureListView({ model: this.model, router: this.options.router });
+                var lectureListView = new LectureListView({ model: this.lectures });
 
                 this.$el.find('.content').append(lectureListView.render().el);
 
-                this.model.fetch();
 
                 return this;
             }

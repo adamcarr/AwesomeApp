@@ -15,6 +15,12 @@ namespace AwesomeApp
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "lectures",
+                url: "lectures/{*id}",
+                defaults: new {controller = "Lectures", action = "Index"}
+                );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

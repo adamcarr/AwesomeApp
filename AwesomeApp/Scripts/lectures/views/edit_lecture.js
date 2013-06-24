@@ -8,7 +8,8 @@
             tagName: 'form',
             template: _.template(EditLectureTemplate),
 
-            initialize: function() {
+            initialize: function (options) {
+                this.lectures = options.lectures;
                 this.model.bind('change', this.render, this);
             },
 
@@ -19,8 +20,9 @@
             },
             
             events: {
-                'click .lecture-save': 'save',
-                'click .lecture-cancel': 'cancel'
+                'click .lecture-save' : 'save',
+                'click .lecture-cancel' : 'cancel',
+                'click .lecture-delete' : 'delete'
             },
             
             save: function() {
@@ -29,17 +31,27 @@
                     Name: rootElement.find('#lecture-name').val(),
                     Description: rootElement.find('#lecture-description').val()
                 });
+                if (this.model.isNew()) {
+                    this.lectures.add(this.model);
+                }
                 this.model.save();
-                this.options.router.navigate('', { trigger: true });
-                return false;
+                Backbone.history.navigate('', { trigger: true });
             },
             
             cancel: function() {
                 if (!this.model.get('Id')) {
                     this.model.destroy();
                 }
-                this.options.router.navigate('', { trigger: true });
-                return false;
+                Backbone.history.navigate('', { trigger: true });
+            },
+            
+            delete:function() {
+                this.model.destroy();
+                Backbone.history.navigate('', { trigger: true });
+            },
+
+            undelegateEvents: function () {
+                this.model.off();
             }
         });
 

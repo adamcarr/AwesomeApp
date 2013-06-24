@@ -7,7 +7,9 @@
         var MenuView = Backbone.View.extend({
             el: '.header',
             
-            initialize: function () { },
+            initialize: function(options) {
+                this.lectures = options.lectures;
+            },
             
             render: function() {
                 this.$el.html(HeaderMenuTemplate);
@@ -19,11 +21,11 @@
             },
             
             refresh: function(event) {
-                this.model.fetch();
+                this.lectures.fetch();
             },
             
             add: function(event) {
-                this.options.router.navigate('add', {trigger: true});
+                Backbone.history.navigate('add', { trigger: true });
             }
         });
 

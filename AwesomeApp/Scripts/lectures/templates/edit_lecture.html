@@ -1,5 +1,10 @@
-﻿<label for="lecture-name">Name</label><br/>
-<input type="text" class="lecture-name" id="lecture-name" value="<%= Name %>"/><br/>
-<label for="lecture-description">Description</label><br/>
-<textarea class="lecture-description" id="lecture-description"><%= Description %></textarea><hr/>
-<button class="btn btn-primary lecture-save">Save</button> | <button class="btn btn-danger lecture-cancel">Cancel</button>
+﻿<div>
+    <label for="lecture-name">Name</label><br/>
+    <input type="text" class="lecture-name" id="lecture-name" value="<%= Name %>"/><br/>
+    <label for="lecture-description">Description</label><br/>
+    <textarea class="lecture-description" id="lecture-description"><%= Description %></textarea><hr/>
+    <button class="btn btn-primary lecture-save">Save</button> | <button class="btn btn-info lecture-cancel">Cancel</button>
+    <% if(Id) { %>
+    | <button class="btn btn-danger lecture-delete">Delete</button>
+    <% } %>
+</div>
